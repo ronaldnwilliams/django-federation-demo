@@ -1,0 +1,18 @@
+type BookType @key(fields: "id", resolvable: true) {
+  id: ID!
+  title: String!
+}
+
+type Query {
+  _service: _Service!
+  _entities(representations: [_Any!]!): [_Entity]!
+  allBooks: [BookType!]!
+}
+
+scalar _Any
+
+union _Entity = BookType
+
+type _Service {
+  sdl: String!
+}

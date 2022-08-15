@@ -1,0 +1,24 @@
+services:
+  gateway:
+    build:
+      context: ./gateway
+    networks: [berry]
+    hostname: gateway
+    depends_on: [books, reviews]
+    ports:
+      - "7000:7000"
+
+  books:
+    build:
+      context: ./books_service
+    networks: [berry]
+    hostname: books
+
+  reviews:
+    build:
+      context: ./reviews_service
+    networks: [berry]
+    hostname: reviews
+
+networks:
+  berry:
